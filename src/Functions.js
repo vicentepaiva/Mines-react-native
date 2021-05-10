@@ -91,6 +91,13 @@ const wonGame = board =>  fields(board).filter(pendding).length === 0
 const showMInes = board => fields(board).filter(field => field.mined)
     .forEach(field => field.opened = true)
 
+const invertFlag = (board, row, column) => {
+    const field = board[row][column]
+    field.flagged = !field.flagged
+}  
+
+const flagUsed = board => fields(board).filter(field => field.flagged).length
+
 
 export { 
   createMinedBoard,
@@ -98,5 +105,7 @@ export {
   openField,
   hadExplosion,
   wonGame,
-  showMInes 
+  showMInes,
+  invertFlag,
+  flagUsed 
 }
